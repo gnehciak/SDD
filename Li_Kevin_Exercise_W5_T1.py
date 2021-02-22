@@ -30,7 +30,3 @@ while peep:
     peep = input("Sales Person: ")
 for i in salesp.keys():
     print(i, ' $', salesp[i], sep='')
-
-
-
-
