@@ -1,0 +1,5 @@
+print(f"Kevin Li\n11SDD.3\nwhite")
+print("$" + str(round(float(input("Amount: "))*0.32, 2)))
+print(f"The distance the car will travel in 6 hours is: {70*6} miles")
+print(f"The distance the car will travel in 6 hours is: {70*10} miles")
+print(f"The distance the car will travel in 6 hours is: {70*15} miles")
