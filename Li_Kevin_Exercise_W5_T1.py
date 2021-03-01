@@ -1,3 +1,9 @@
+def isFloat(i):
+    try:
+        float(i)
+        return True
+    except ValueError:
+        return False
 # 1
 ing1, ing2 = input("Ingredient 1: "), input("Ingredient 2: ")
 print(ing1, ing2)
@@ -9,24 +15,42 @@ while card1 != card2:
     card2 = input("Card 2: ")
 print("Snap")
 # 3
-print('$', round(float(input("Original Price: "))*0.8, 2), sep='')
+price = input("Original Price: ")
+while not isFloat(price):
+    print("Please enter a valid value")
+    price = input("Original Price: ")
+print('$', round(float(price) * 0.8, 2), sep='')
 # 4
-test1, test2, test3 = float(input("test 1: ")), float(input("test 2: ")), float(input("test 3: "))
-avg = round((test1 + test2 + test3)/3, 2)
+test = {'test 1: ':None, 'test 2: ':None, 'test 3: ':None}
+avg = 0
+for i in test:
+    test[i] = input(i)
+    while not isFloat(test[i]):
+        print("Please enter a valid value.")
+        test[i] = input(i)
+    avg += float(test[i])
+avg = round(avg/3, 2)
 print(f"Your average is: {avg}" if avg <= 90 else f"Congratulations, your result of {avg} is greater than 90!")
 # 5
-limit = int(input("Limit: "))
+limit = input("Limit: ")
+while not limit.isdigit():
+    print("Please enter a valid value.")
+    limit = input("Limit: ")
 squarenum = 1
-while squarenum ** 2 <= limit:
+while squarenum ** 2 <= float(limit):
     print(squarenum ** 2)
     squarenum += 1
 # 6
 salesp = {}
 peep = input("Sales Person: ")
 while peep:
-    price = float(input("Price: "))
-    salesp[peep] = round(price*0.1, 2)
+    price = input("Price: ")
+    while not isFloat(price):
+        print("Please enter a valid value.")
+        price = input("Price: ")
+        price = float(price)
+    salesp[peep] = salesp[peep] + round(price*0.1, 2) if peep in salesp else round(price*0.1, 2)
     price = 0
     peep = input("Sales Person: ")
 for i in salesp.keys():
-    print(i, ' $', salesp[i], sep='')
+    print(i, ' $', round(salesp[i], 2), sep='')
